@@ -75,9 +75,9 @@ public class Server {
         final ModelRegistry registry = new ModelRegistry();
         registry.loadModelsFromResourcesFolder("models");
 
+        /*
         eventHandler.addListener(PlayerSpawnEvent.class, event -> {
             final var player = event.getPlayer();
-
             // add a custom model entity (RedstoneMonstrosity)
             // which has AI
             final RedstoneMonstrosity redstoneMonstrosity = new RedstoneMonstrosity(
@@ -87,6 +87,7 @@ public class Server {
             MinestomModelEngine.minestom().tracker().startGlobalTracking(redstoneMonstrosity);
             registry.view("redstone_monstrosity_" + player.getUsername(), redstoneMonstrosity);
         });
+        */
 
         BuiltResourcePack resourcePack = ResourcePackFactory.create(registry);
         MinecraftServer.getCommandManager().register(new HephaestusCommand(registry, resourcePack));

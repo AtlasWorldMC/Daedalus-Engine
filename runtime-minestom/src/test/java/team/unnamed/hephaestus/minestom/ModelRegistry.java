@@ -61,7 +61,8 @@ public final class ModelRegistry {
 
     public void write(ResourcePack resourcePack) {
         ModelWriter.resource().write(resourcePack, models.values());
-        PlayerRigWriter.resource().write(resourcePack);
+        // PlayerRigWriter.resource().write(resourcePack);
+        // TODO: Make Player Rig work again.
     }
 
     public void model(Model model) {

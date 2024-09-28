@@ -101,7 +101,7 @@ final class HephaestusCommand extends Command {
                 ModelEntity view = MinestomModelEngine.minestom().createViewAndTrack(
                         model,
                         player.getInstance(),
-                        player.getPosition(),
+                        player.getPosition().withPitch(0),
                         1
                 );
 
@@ -109,8 +109,6 @@ final class HephaestusCommand extends Command {
                     .addListener(EntityAttackEvent.class, event -> {
                         Entity interactor = event.getEntity();
                         double yaw = Math.toRadians(interactor.getPosition().yaw());
-
-                        view.colorize(0xDC3232);
 
                         MinecraftServer.getSchedulerManager()
                                 .buildTask(view::colorizeDefault)

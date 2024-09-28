@@ -1,6 +1,6 @@
 [versions]
 creative = "1.7.3"
-adventure = "4.15.0"
+adventure = "4.17.0"
 annotations = "24.1.0"
 mocha = "3.0.0"
 
@@ -8,7 +8,7 @@ mocha = "3.0.0"
 gson = "2.11.0"
 
 # runtime-minestom
-minestom = "7320437640"
+minestom = "4305006e6b"
 
 
 [libraries]

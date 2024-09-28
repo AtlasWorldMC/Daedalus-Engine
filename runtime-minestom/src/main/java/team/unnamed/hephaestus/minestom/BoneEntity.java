@@ -25,20 +25,20 @@ package team.unnamed.hephaestus.minestom;
 
 import net.kyori.adventure.nbt.BinaryTagTypes;
 import net.kyori.adventure.nbt.CompoundBinaryTag;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
+import net.minestom.server.adventure.serializer.nbt.NbtComponentSerializer;
 import net.minestom.server.color.Color;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.metadata.display.ItemDisplayMeta;
+import net.minestom.server.item.ItemComponent;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.minestom.server.item.metadata.LeatherArmorMeta;
+import net.minestom.server.item.component.DyedItemColor;
 import net.minestom.server.utils.NamespaceID;
 import org.jetbrains.annotations.NotNull;
-import org.jglrxavpok.hephaistos.nbt.NBTCompound;
-import org.jglrxavpok.hephaistos.nbt.NBTException;
-import org.jglrxavpok.hephaistos.nbt.NBTReader;
-import org.jglrxavpok.hephaistos.nbt.NBTType;
 import team.unnamed.creative.base.Vector3Float;
 import team.unnamed.hephaestus.Bone;
 import team.unnamed.hephaestus.Hephaestus;
@@ -53,10 +53,7 @@ import java.io.IOException;
 public class BoneEntity extends GenericBoneEntity implements BoneModifierMap.Forwarding {
 
     private static final ItemStack BASE_HELMET = ItemStack.builder(Material.LEATHER_HORSE_ARMOR)
-            .meta(new LeatherArmorMeta.Builder()
-                    .color(new Color(0xFFFFFF))
-                    .build()
-            )
+            .set(ItemComponent.DYED_COLOR, DyedItemColor.LEATHER.withColor(new Color(0xFFFFFF)))
             .build();
 
     protected final ModelEntity view;
@@ -88,8 +85,7 @@ public class BoneEntity extends GenericBoneEntity implements BoneModifierMap.For
         if (bone.parentOnly() || invisible) {
             meta.setItemStack(ItemStack.AIR);
         } else {
-            meta.setItemStack(BASE_HELMET.withMeta(itemMeta ->
-                    itemMeta.customModelData(bone.customModelData())));
+            meta.setItemStack(BASE_HELMET.with(ItemComponent.CUSTOM_MODEL_DATA, bone.customModelData()));
         }
     }
 
@@ -174,20 +170,10 @@ public class BoneEntity extends GenericBoneEntity implements BoneModifierMap.For
         if (item == null) {
             throw new IllegalStateException("Item key " + itemKey + " is not a valid material");
         }
-        var itemStack = ItemStack.of(item, 1);
 
-        try {
-            final var bytes = new ByteArrayOutputStream();
-            final var output = new DataOutputStream(bytes);
-            BinaryTagTypes.COMPOUND.write(tag, output);
-            output.flush();
-
-            final var minestomTag = (NBTCompound) NBTReader.fromArray(bytes.toByteArray())
-                    .readRaw(NBTType.TAG_Compound.getOrdinal());
-            itemStack = itemStack.withMeta(meta -> meta.tagHandler().updateContent(minestomTag));
-        } catch (final IOException | NBTException e) {
-            throw new RuntimeException("Failed to write item tag", e);
-        }
+        var itemStack = ItemStack.of(item, 1)
+                .with(ItemComponent.CUSTOM_NAME, Component.text().color(TextColor.color(color)).build())
+                .with(ItemComponent.CUSTOM_MODEL_DATA, bone.customModelData());
 
         ((ItemDisplayMeta) getEntityMeta()).setItemStack(itemStack);
     }
