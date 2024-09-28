@@ -1,5 +1,5 @@
 plugins {
-    id("hephaestus.publishing-conventions")
+    id("daedalus.publishing-conventions")
 }
 
 dependencies {

@@ -1,8 +1,8 @@
 plugins {
-    id("hephaestus.publishing-conventions")
+    id("daedalus.publishing-conventions")
 }
 
 dependencies {
-    api(project(":hephaestus-api"))
+    api(project(":daedalus-api"))
     api(libs.gson)
 }

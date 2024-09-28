@@ -10,8 +10,8 @@ Execute the following commands to build the library
 
 ```shell
 # Clone the repository
-git clone https://github.com/unnamed/hephaestus-engine
-cd hephaestus-engine
+git clone https://github.com/AtlasWorldMC/Daedalus-Engine
+cd daedalus-engine
 
 # Build it (use 'shadowJar' if you are going to use 
 # runtime-bukkit/test-plugin)

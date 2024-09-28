@@ -1,5 +1,5 @@
 plugins {
-    id("hephaestus.publishing-conventions")
+    id("daedalus.publishing-conventions")
 }
 
 repositories {
@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    api(project(":hephaestus-api"))
+    api(project(":daedalus-api"))
     compileOnly(libs.minestom)
 
     testImplementation(libs.creative.api)
@@ -17,5 +17,5 @@ dependencies {
 
     testImplementation(libs.minestom)
     testImplementation("org.slf4j:slf4j-jdk14:2.0.12")
-    testImplementation(project(":hephaestus-reader-blockbench"))
+    testImplementation(project(":daedalus-reader-blockbench"))
 }

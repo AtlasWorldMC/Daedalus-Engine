@@ -1,5 +1,5 @@
 plugins {
-    id("hephaestus.runtime-bukkit-conventions")
+    id("daedalus.runtime-bukkit-conventions")
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("xyz.jpenilla.run-paper") version "2.2.3"
 }
@@ -11,11 +11,11 @@ dependencies {
     // resource-pack plugin api
     compileOnly("team.unnamed:creative-central-api:1.4.0")
 
-    // hephaestus-engine dependencies
-    implementation(project(":hephaestus-api"))
-    implementation(project(":hephaestus-reader-blockbench"))
-    implementation(project(":hephaestus-runtime-bukkit-api"))
-    implementation(project(":hephaestus-runtime-bukkit-adapt-v1_20_R3", configuration = "reobf"))
+    // daedalus-engine dependencies
+    implementation(project(":daedalus-api"))
+    implementation(project(":daedalus-reader-blockbench"))
+    implementation(project(":daedalus-runtime-bukkit-api"))
+    implementation(project(":daedalus-runtime-bukkit-adapt-v1_20_R3", configuration = "reobf"))
 }
 
 tasks {

@@ -1,9 +1,9 @@
 plugins {
-    id("hephaestus.runtime-bukkit-conventions")
-    id("hephaestus.publishing-conventions")
+    id("daedalus.runtime-bukkit-conventions")
+    id("daedalus.publishing-conventions")
 }
 
 dependencies {
-    api(project(":hephaestus-api"))
+    api(project(":daedalus-api"))
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
 }

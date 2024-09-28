@@ -2,7 +2,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-rootProject.name = "hephaestus-parent"
+rootProject.name = "daedalus-engine"
 
 includePrefixed("api")
 includePrefixed("reader-blockbench")
@@ -15,6 +15,6 @@ fun includePrefixed(name: String) {
     val kebabName = name.replace(':', '-')
     val path = name.replace(':', '/')
 
-    include("hephaestus-$kebabName")
-    project(":hephaestus-$kebabName").projectDir = file(path)
+    include("daedalus-$kebabName")
+    project(":daedalus-$kebabName").projectDir = file(path)
 }

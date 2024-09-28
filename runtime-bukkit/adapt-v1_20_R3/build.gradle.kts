@@ -1,6 +1,6 @@
 plugins {
-    id("hephaestus.runtime-bukkit-conventions")
-    id("hephaestus.publishing-conventions")
+    id("daedalus.runtime-bukkit-conventions")
+    id("daedalus.publishing-conventions")
     id("io.papermc.paperweight.userdev") version "1.5.12"
 }
 
@@ -17,12 +17,12 @@ tasks {
 dependencies {
     paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
 
-    implementation(project(":hephaestus-runtime-bukkit-api"))
+    implementation(project(":daedalus-runtime-bukkit-api"))
 }
 
 tasks {
     reobfJar {
-        outputJar = file("build/libs/hephaestus-runtime-bukkit-adapt-v1_20_R3-reobf.jar")
+        outputJar = file("build/libs/daedalus-runtime-bukkit-adapt-v1_20_R3-reobf.jar")
     }
     create<Sign>("signReobfJar") {
         dependsOn(reobfJar)

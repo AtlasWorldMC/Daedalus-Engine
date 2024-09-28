@@ -1,8 +1,8 @@
-main: team.unnamed.hephaestus.bukkit.plugin.HephaestusTestPlugin
-name: HephaestusTestPlugin
+main: fr.atlasworld.daedalus.bukkit.plugin.DaedalusTestPlugin
+name: DaedalusTestPlugin
 version: 1.0.0
 api-version: 1.20
 depend: [creative-central]
 commands:
-    hephaestus:
-        description: Main command for hephaestus-engine test plugin
+    daedalus:
+        description: Main command for daedalus-engine test plugin
